@@ -65,6 +65,7 @@ color: white;
     bottom: 0;
     font-size: 10px;
     gap: 13px;
+    padding: 10px 0;
 }
 .footer a{
     
@@ -98,6 +99,7 @@ color: white;
     padding: 10px;
     border-radius: 5px;
     background-color: #252525;
+    position: relative;
 }
 .card > *{
     padding-top: 10px;
@@ -105,4 +107,25 @@ color: white;
 .card img{
     width: 100%;
     object-fit: contain;
+}
+.play{
+    position: absolute;
+    top: 220px;
+    right: 41px;
+    transition:all 1s ease-in-out;
+    opacity: 0;
+
+}
+
+.play-button {
+    display: block;
+    width: 203%;
+    height: auto;
+    /* opacity: 0; */
+    /* transition:all 1s ease-in-out; */
+}
+
+.play:hover{
+    top: 134px;
+    opacity: 1;
 }
