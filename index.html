@@ -3,11 +3,19 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Spotify</title>
+    <title>Spotify - Web Player: Music for everyone</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="./css/style.css" />
     <link rel="stylesheet" href="./css/utility.css" />
+    <!-- <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    /> -->
   </head>
   <body>
     <div class="container flex bg-black">
@@ -25,73 +33,168 @@
         </div>
         <div class="bg-grey rounded library m-1 p-1">
           <div class="heading">
-            <img src="./img/playlist.svg" alt="playlist" class="invert">
-            <h2>
-            Your library
-            </h2>
+            <img src="./img/playlist.svg" alt="playlist" class="invert" />
+            <h2>Your library</h2>
           </div>
-          
+
+          <div class="songList">
+            <ul class="ul">
+              <li>
+                <img src="./img/music.svg" class="invert" alt="">
+                <div class="info">
+                   <div class="">Song Name</div>
+                  <div class="">Song Artist</div>
+                </div>
+                <div class="playnow">
+                  <span>Play Now</span>
+                  <img src="./img/play.svg" class="invert" alt="">
+                </div>
+              </li>
+            </ul>
+          </div>
+
           <div class="footer">
-            <div><a href="https://www.spotify.com/jp/legal/"><span>Legal</span></a></div>
-            <div><a href="https://www.spotify.com/jp/privacy/"><span>Privacy Center</span></a></div>
-            <div><a href="https://www.spotify.com/jp/legal/privacy-policy/"><span>Privacy Policy</span></a>
+            <div>
+              <a href="https://www.spotify.com/jp/legal/"><span>Legal</span></a>
             </div>
-            <div><a href="https://www.spotify.com/jp/legal/cookies-policy/"><span>Cookies</span></a></div>
-            <div><a href="https://www.spotify.com/jp/legal/privacy-policy/#s3"><span>About Ads</span></a></div>
-            <div><a href="https://www.spotify.com/jp/accessibility/"><span>Accessibility</span></a></div>
+            <div>
+              <a href="https://www.spotify.com/jp/privacy/"
+                ><span>Privacy Center</span></a
+              >
+            </div>
+            <div>
+              <a href="https://www.spotify.com/jp/legal/privacy-policy/"
+                ><span>Privacy Policy</span></a
+              >
+            </div>
+            <div>
+              <a href="https://www.spotify.com/jp/legal/cookies-policy/"
+                ><span>Cookies</span></a
+              >
+            </div>
+            <div>
+              <a href="https://www.spotify.com/jp/legal/privacy-policy/#s3"
+                ><span>About Ads</span></a
+              >
+            </div>
+            <div>
+              <a href="https://www.spotify.com/jp/accessibility/"
+                ><span>Accessibility</span></a
+              >
+            </div>
+          </div>
         </div>
-        
-
-        </div>
-
-        </div>
-      <div class="right bg-grey rounded ">
+      </div>
+      <div class="right bg-grey rounded">
         <div class="header">
           <div class="nav">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
               <path
-                  d="M15 6L9.70711 11.2929C9.37377 11.6262 9.20711 11.7929 9.20711 12C9.20711 12.2071 9.37377 12.3738 9.70711 12.7071L15 18"
-                  stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-          </svg>
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                d="M15 6L9.70711 11.2929C9.37377 11.6262 9.20711 11.7929 9.20711 12C9.20711 12.2071 9.37377 12.3738 9.70711 12.7071L15 18"
+                stroke="#ffffff"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
               <path
-                  d="M9 18L14.2929 12.7071C14.6262 12.3738 14.7929 12.2071 14.7929 12C14.7929 11.7929 14.6262 11.6262 14.2929 11.2929L9 6"
-                  stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-          </svg>
+                d="M9 18L14.2929 12.7071C14.6262 12.3738 14.7929 12.2071 14.7929 12C14.7929 11.7929 14.6262 11.6262 14.2929 11.2929L9 6"
+                stroke="#ffffff"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
           </div>
           <div class="buttons">
-            <button>Signup</button>
-            <button>Login</button>
+            <button class="signupbtn">Sign up</button>
+            <button class="loginbtn">Log in</button>
           </div>
         </div>
         <div class="spotifyPlaylists">
           <h1>Spotify Playlists</h1>
           <div class="cardContianer">
+            <div class="card">
+              <div class="play">
+                <svg
+                  class="play-button"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  height="24"
+                  fill="none"
+                >
+                  <circle cx="12" cy="12" r="12" fill="#1DB954" />
+                  <path d="M9 6l9 6-9 6V6z" fill="black" />
+                </svg>
+              </div>
+              <img
+                src="https://i.scdn.co/image/ab67616d00001e0285c5968be0d0d9c545241124"
+                alt=""
+              />
+              <h2>Happiness Hits</h2>
+              <p>Hits to boost your mood and fill you with Happiness!</p>
+            </div>
 
             <div class="card">
               <div class="play">
-                <svg class="play-button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none">
-                  <circle cx="12" cy="12" r="12" fill="#1DB954"/>
-                  <path d="M9 6l9 6-9 6V6z" fill="black"/>
-              </svg>
-              
-              
+                <svg
+                  class="play-button"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  height="24"
+                  fill="none"
+                >
+                  <circle cx="12" cy="12" r="12" fill="#1DB954" />
+                  <path d="M9 6l9 6-9 6V6z" fill="black" />
+                </svg>
               </div>
-              <img src="https://i.scdn.co/image/ab67616d00001e0285c5968be0d0d9c545241124" alt="">
+              <img
+                src="https://i.scdn.co/image/ab67616d00001e0285c5968be0d0d9c545241124"
+                alt=""
+              />
               <h2>Happiness Hits</h2>
               <p>Hits to boost your mood and fill you with Happiness!</p>
             </div>
-            
-            <div class="card">
-              <img src="https://i.scdn.co/image/ab67616d00001e0285c5968be0d0d9c545241124" alt="">
-              <h2>Happiness Hits</h2>
-              <p>Hits to boost your mood and fill you with Happiness!</p>
-            </div>
+          </div>
+          <div class="playbar">
+            <div class="songinfo">
 
+            </div>
+            <div class="songsbuttons">
+              <img class="" src="./img/prevsong.svg" alt="">
+              <img class="" src="./img/play.svg" alt="">
+              <img class="" src="./img/nextsong.svg" alt="">
+            </div>
+            <div class="songtime">
+
+            </div>
           </div>
         </div>
       </div>
     </div>
-    <script src="./js/app.js"></script>
+
+    <!-- <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"
+      integrity="sha512-16esztaSRplJROstbIIdwX3N97V1+pZvV33ABoG1H2OyTttBxEGkTsoIVsiP1iaTtM8b3+hu2kB6pQ4Clr5yug=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script> -->
+    <script src="./js/script.js"></script>
   </body>
 </html>
