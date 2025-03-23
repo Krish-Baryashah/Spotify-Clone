@@ -3,10 +3,8 @@
 //     smooth: true,
 // });
 
-
-
 async function getSongs() {
-    // Get the list of all the songs
+  // Get the list of all the songs
   let a = await fetch("http://127.0.0.1:5500/songss/");
   let response = await a.text();
   let div = document.createElement("div");
@@ -25,9 +23,17 @@ async function getSongs() {
   return songs;
 }
 
+// Play Music
+const playMusic = (track)=>{
+  let audio = new Audio("/songss/", + track)
+  audio.play
+}
+
 
 // Show all the songs in the playlisy
 async function main() {
+  let currentSong;
+
   let songs = await getSongs();
   console.log(songs);
 
@@ -37,7 +43,7 @@ async function main() {
   for (const song of songs) {
     songUl.innerHTML =
       songUl.innerHTML +
-       `<li> 
+      `<li> 
             <img src="./img/music.svg" class="invert" alt="">
                 <div class="info">
                    <div class="">${song}</div>
@@ -50,6 +56,14 @@ async function main() {
               </li>
         `;
   }
+  // Attach an ebent listner  to each spmg
+  Array.from(
+    document.querySelector(".songList").getElementsByTagName("li")
+  ).forEach((e) => {
+    console.log(e.querySelector('.info').firstElementChild.innerHTML);
+    playMusic(e.querySelector('.info').firstElementChild.innerHTML)
+    
+  });
 }
 
 main();
