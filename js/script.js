@@ -3,7 +3,10 @@
 //     smooth: true,
 // });
 
+
+
 async function getSongs() {
+    // Get the list of all the songs
   let a = await fetch("http://127.0.0.1:5500/songss/");
   let response = await a.text();
   let div = document.createElement("div");
@@ -22,6 +25,8 @@ async function getSongs() {
   return songs;
 }
 
+
+// Show all the songs in the playlisy
 async function main() {
   let songs = await getSongs();
   console.log(songs);
