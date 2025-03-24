@@ -6,6 +6,12 @@
     /* font-family: "Roboto", sans-serif; */
 }
 
+*::selection{
+    color: black;
+    background-color : white;
+}
+
+
 @import url('https://fonts.googleapis.com/css2?family=Flow+Circular&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
 body {
@@ -248,22 +254,23 @@ body {
 }
 
 .seekbar{
-    height: 2px;
+    height: 4px;
     width: 98%;
-    background:  black;
+    background:  rgb(0, 98, 255);
     border-radius: 10px ;
     position: absolute;
     bottom: 15px;
     /* margin: 6px; */
+    cursor: pointer;
 }
 
 .circle{
     width: 16px;
     height: 16px;
     border-radius: 13px;
-    background-color: black;
+    background-color: rgb(0, 157, 255);
     position: relative;
-    bottom: 8px;
+    bottom: 7px;
     left: 0%;
     transition: left 0.5s ;
 }
