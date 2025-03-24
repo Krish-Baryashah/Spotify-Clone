@@ -87,7 +87,7 @@ async function main() {
     document.querySelector(".songList").getElementsByTagName("li")
   ).forEach((e) => {
     e.addEventListener("click",element=>{
-      console.log(e.querySelector('.info').firstElementChild.innerHTML.trim());
+      // console.log(e.querySelector('.info').firstElementChild.innerHTML.trim());
       // if(currentSong.paused){
       //   currentSong.play()
       //   play.src = '/img/pause.svg'
@@ -95,24 +95,38 @@ async function main() {
       //   currentSong.pause()
       //   play.src = '/img/play.svg'
       // }
+      let a = document.querySelector('.playnow').getElementsByTagName('img')
+      let b = document.querySelector('.playnow').getElementsByTagName('span')
+      
+     
+     if(playMusic(e.querySelector('.info').firstElementChild.innerHTML.trim()) == true){
+      a.src = window.location.origin + '/img/pause.svg'; 
+      b.innerText = "Pause Now"
+      // flag = 1  
+    }else{
+    a.src = window.location.origin + '/img/play.svg'; 
+      b.innerText = "Play Now"
+      // flag = 0  
+     }
+    
+
       playMusic(e.querySelector('.info').firstElementChild.innerHTML.trim())
       
     })
     
   });
-}
-
-// Attach an event listener to play next and previous
-
-play.addEventListener("click",()=>{
-  if(currentSong.paused){
+  
+  // Attach an event listener to play next and previous
+  
+  play.addEventListener("click",()=>{
+    if(currentSong.paused){
     currentSong.play()
     play.src = '/img/pause.svg'
   }else{
     currentSong.pause()
     play.src = '/img/play.svg'
   }
-
+  
 })
 
 currentSong.addEventListener("timeupdate",
@@ -120,7 +134,7 @@ currentSong.addEventListener("timeupdate",
     console.log(currentSong.currentTime, currentSong.duration);
     document.querySelector(".songtime").innerHTML = `${formatTime(currentSong.currentTime)}:${formatTime(currentSong.duration)}`
     document.querySelector(".circle").style.left = (currentSong.currentTime/currentSong.duration)*100 + "%"
-
+    
   }
 )
 
@@ -130,7 +144,19 @@ document.querySelector('.seekbar').addEventListener('click',(e)=>{
   let percent = (e.offsetX/e.target.getBoundingClientRect().width)*100 
   document.querySelector(".circle").style.left = percent + "%"
   currentSong.currentTime = ((currentSong.duration)*percent) / 100
+}
+)
+
+// Add an event listener for hamburger 
+document.querySelector(".hamburger").addEventListener("click",()=>{
+  document.querySelector(".left").style.left = "0"
 })
 
+}
+
+// Add an event listner for close button
+document.querySelector('.close').addEventListener("click",()=>{
+  document.querySelector('.left').style.left = "-120%"
+})
 
 main();

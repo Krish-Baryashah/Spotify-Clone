@@ -37,6 +37,12 @@
     padding: 10px;
 }
 
+.justify-content-center{
+    justify-content:center
+}
+.align-items-center{
+    align-items:center
+}
 
 /* For Webkit browsers (e.g., Chrome, Safari) */
 ::-webkit-scrollbar {
