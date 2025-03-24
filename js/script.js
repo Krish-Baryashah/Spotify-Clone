@@ -2,6 +2,7 @@
 //     el: document.querySelector("#main"),
 //     smooth: true,
 // });
+let currentSong = new Audio();
 
 async function getSongs() {
   // Get the list of all the songs
@@ -25,14 +26,16 @@ async function getSongs() {
 
 // Play Music
 const playMusic = (track)=>{
-  let audio = new Audio("/songss/", + track)
-  audio.play
+  // let audio = new Audio("/songss/" + track)
+  currentSong.src = "/songss/" + track;
+  currentSong.play()
+  document.querySelector('.songinfo').innerHTML = track
+  document.querySelector('.songtime').innerHTML = '00:00 / 00:00'
 }
 
 
 // Show all the songs in the playlisy
 async function main() {
-  let currentSong;
 
   let songs = await getSongs();
   console.log(songs);
@@ -56,14 +59,47 @@ async function main() {
               </li>
         `;
   }
-  // Attach an ebent listner  to each spmg
+  // Attach an event listner  to each song
   Array.from(
     document.querySelector(".songList").getElementsByTagName("li")
   ).forEach((e) => {
-    console.log(e.querySelector('.info').firstElementChild.innerHTML);
-    playMusic(e.querySelector('.info').firstElementChild.innerHTML)
+    e.addEventListener("click",element=>{
+      console.log(e.querySelector('.info').firstElementChild.innerHTML.trim());
+      if(currentSong.paused){
+        currentSong.play()
+        play.src = '/img/pause.svg'
+        playMusic(e.querySelector('.info').firstElementChild.innerHTML.trim())
+      }else{
+        currentSong.pause()
+        play.src = '/img/play.svg'
+      }
+      
+    })
     
   });
 }
+
+// Attach an event listener to play next and previous
+
+play.addEventListener("click",()=>{
+  if(currentSong.paused){
+    currentSong.play()
+    play.src = '/img/pause.svg'
+  }else{
+    currentSong.pause()
+    play.src = '/img/play.svg'
+  }
+
+})
+
+currentSong.addEventListener("timeupdate",
+  ()=>{
+    
+  }
+)
+
+
+
+
 
 main();
