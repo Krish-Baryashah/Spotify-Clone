@@ -47,9 +47,8 @@ const playMusic = (track,pause=false)=>{
   // let audio = new Audio("/songss/" + track)
   currentSong.src = "/songss/" + track;
   if(!pause){
-    
     currentSong.play()
-    play.src = '/img/play.svg'
+    play.src = '/img/pause.svg'
   }
   document.querySelector('.songinfo').innerHTML = track
   document.querySelector('.songtime').innerHTML = '00:00 / 00:00'
@@ -62,7 +61,7 @@ async function main() {
   let songs = await getSongs();
   console.log(songs);
 
-  playMusic(songs[0])
+  playMusic(songs[0],true)
 
   let songUl = document
     .querySelector(".songList")
