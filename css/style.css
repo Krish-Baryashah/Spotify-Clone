@@ -109,8 +109,8 @@ body {
 
 .cardContianer {
     display: flex;
-    margin: 30px;
     gap: 10px;
+  
     flex-wrap: wrap;
     overflow-y: auto;
     max-height: 70vh;
@@ -204,7 +204,7 @@ body {
     filter: invert(1);
     background: #e2d9d9;
     border-radius: 10px;
-    height: 70px;
+    min-height: 70px;
     /* width: 90%; */
     width: 73vw;
     padding: 12px;
@@ -260,7 +260,7 @@ body {
 
 .seekbar {
     height: 4px;
-    width: 98%;
+    width: 97%;
     background: rgb(0, 98, 255);
     border-radius: 10px;
     position: absolute;
@@ -286,6 +286,7 @@ body {
 
 .abovebar {
     display: flex;
+    margin: 20px 0;
     justify-content: space-between;
 }
 
@@ -298,7 +299,6 @@ body {
 .hamburger {
     display: none;
 }
-
 .hamburger-container {
     display: flex;
     justify-content: center;
@@ -311,6 +311,8 @@ body {
     top: 25px;
     width: 29px;
 }
+
+
 @media (max-width:1400px) {
     .left {
         position: absolute;
@@ -321,16 +323,68 @@ body {
         width: 378px;
     }
 
+    .cardContianer{
+        justify-content: center;
+    }
+    .left .close{
+        position: absolute;
+        right: 31px;
+        top: 25px;
+        width: 29;
+    }
+
     .right {
-        width: 88vw;
+        width: 100vw;
+        
     }
 
     .playbar {
-        width: 90%;
+        width: calc(102vw - 55px);
+        right: 20px;
     }
 
+    .seekbar{
+        width: calc(98vw - 65px);
+
+    }
     .hamburger {
         display: block;
     }
 
+    .card{
+        width: 90vw;
+    }
 }
+
+/* @media (max-width: 1000px) and (min-width: 524px) {
+    .playbar {
+        width: 96%;
+    }
+    .right {
+        width: 99vw;
+    }
+}
+@media (max-width: 1400px) and (min-width: 1000px) {
+    .playbar {
+        width: 97%;
+    }
+    .right {
+        width: 99vw;
+    }
+} */
+/* 
+@media (min-width: 516px) and (max-width: 700px) {
+    .seekbar {
+        width: 91vw;
+    }
+}
+@media (min-width: 700px) and (max-width: 1200px) {
+    .seekbar {
+        width: 93vw;
+    }
+}
+@media (min-width: 320px) and (max-width: 516px) {
+    .seekbar {
+        width: 90%;
+    }
+} */
