@@ -3,7 +3,7 @@
 //     smooth: true,
 // });
 let currentSong = new Audio();
-
+let songs;
 function formatTime(seconds) {
   seconds = Math.round(seconds); // Round to nearest whole number
   const minutes = Math.floor(seconds / 60);
@@ -26,7 +26,7 @@ async function getSongs() {
   div.innerHTML = response;
   let as = div.getElementsByTagName("a");
 
-  let songs = [];
+  songs = [];
 
   for (let index = 0; index < as.length; index++) {
     const element = as[index];
@@ -51,7 +51,7 @@ const playMusic = (track, pause = false) => {
     currentSong.play();
     play.src = "/img/pause.svg";
   }
-  document.querySelector(".songinfo").innerHTML = track;
+  document.querySelector(".songinfo").innerHTML = decodeURI(track);
   document.querySelector(".songtime").innerHTML = "00:00 / 00:00";
 };
 
@@ -127,11 +127,13 @@ async function main() {
     }
   });
 
+
+  // Time Update
+
   currentSong.addEventListener("timeupdate", () => {
-    console.log(currentSong.currentTime, currentSong.duration);
-    document.querySelector(".songtime").innerHTML = `${formatTime(
-      currentSong.currentTime
-    )}:${formatTime(currentSong.duration)}`;
+    document.querySelector(".songtime").innerHTML = `${formatTime( isNaN(currentSong.currentTime
+    ) ? 0 : currentSong.currentTime
+    )}:${formatTime(isNaN(currentSong.duration) ? 0 : currentSong.duration)}`;
     document.querySelector(".circle").style.left =
       (currentSong.currentTime / currentSong.duration) * 100 + "%";
   });
@@ -147,56 +149,130 @@ async function main() {
   document.querySelector(".hamburger").addEventListener("click", () => {
     document.querySelector(".left").style.left = "0";
   });
-  
+
   // Add an event listner for close button
   document.querySelector(".close").addEventListener("click", () => {
     document.querySelector(".left").style.left = "-120%";
   });
- 
-  
-  // Add an event listner to previous 
 
-  previous.addEventListener('click',()=>{
-    console.log('previous clicked')
-  })
-  
-  
+  // Add an event listner to previous
+
+  previous.addEventListener("click", () => {
+    console.log("previous clicked");
+    console.log(currentSong);
+
+    let currentFile = decodeURIComponent(currentSong.src.split("/").pop());
+      console.log("Extracted filename:", currentFile);
+    let index = songs.indexOf(currentFile);
+    console.log("Current index:", index);
+    if (index > 0) {
+      console.log("Playing previous song:", songs[index - 1]);
+      playMusic(songs[index - 1]);
+    } else {
+      console.log("No previous song available!");
+    }
+  });
+
   // Add an event listner to next
+
+  next.addEventListener("click", () => {
+    console.log("Next clicked");
+    console.log(currentSong);
+
+    let currentFile = decodeURIComponent(currentSong.src.split("/").pop());
+      console.log("Extracted filename:", currentFile);
+    let index = songs.indexOf(currentFile);
+    console.log("Current index:", index);
+    if (index + 1 < songs.length) {
+      console.log("Playing next song:", songs[index + 1]);
+      playMusic(songs[index + 1]);
+    } else {
+      console.log("No next song available!");
+    }
+  });
+
+
+  // ----------------ChatGpt--------------------------
+  // Previous Button Fix
+  // previous.addEventListener("click", () => {
+  //   console.log("Previous clicked");
+  //   console.log("Current song:", currentSong.src);
+
+  //   let currentFile = decodeURIComponent(currentSong.src.split("/").pop());
+  //   console.log("Extracted filename:", currentFile);
+
+  //   let index = songs.indexOf(currentFile);
+  //   console.log("Current index:", index);
+
+  //   if (index > 0) {
+  //     console.log("Playing previous song:", songs[index - 1]);
+  //     playMusic(songs[index - 1]);
+  //   } else {
+  //     console.log("No previous song available!");
+  //   }
+  // });
+
+  // Next Button Fix
+  // next.addEventListener("click", () => {
+  //   console.log("Next clicked");
+  //   console.log("Current song:", currentSong.src);
+
+  //   let currentFile = decodeURIComponent(currentSong.src.split("/").pop());
+  //   console.log("Extracted filename:", currentFile);
+
+  //   let index = songs.indexOf(currentFile);
+  //   console.log("Current index:", index, "Total Songs:", songs.length);
+
+  //   if (index !== -1 && index + 1 < songs.length) {
+  //     console.log("Playing next song:", songs[index + 1]);
+  //     playMusic(songs[index + 1]);
+  //   } else {
+  //     console.log("No next song available!");
+  //   }
+  // });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.code === "Space") {
+      event.preventDefault(); // Space scrolling rokne ke liye
+      if (currentSong.paused) {
+        currentSong.play();
+        play.src = "/img/pause.svg";
+      } else {
+        currentSong.pause();
+        play.src = "/img/play.svg";
+      }
+    }
   
-  next.addEventListener('click',()=>{
-    console.log('Next clicked')
-  })
+    if (event.key.toLowerCase() === "n") {
+      // Next song
+      let currentFile = decodeURIComponent(currentSong.src.split("/").pop()); // Fix file name issue
+      let index = songs.indexOf(currentFile);
+      
+      if (index !== -1 && index + 1 < songs.length) {
+        playMusic(songs[index + 1]);
+      } else {
+        console.log("No next song available");
+      }
+    }
+  
+    if (event.key.toLowerCase() === "p") {
+      // Previous song
+      let currentFile = decodeURIComponent(currentSong.src.split("/").pop()); // Fix file name issue
+      let index = songs.indexOf(currentFile);
+  
+      if (index > 0) {
+        playMusic(songs[index - 1]);
+      } else {
+        console.log("No previous song available");
+      }
+    }
+  });
+  
+  
 
+  // ----------------ChatGpt--------------------------
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  
+  
 }
 main();
