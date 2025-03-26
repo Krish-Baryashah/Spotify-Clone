@@ -55,7 +55,34 @@ const playMusic = (track, pause = false) => {
   }
   document.querySelector(".songinfo").innerHTML = decodeURI(track);
   document.querySelector(".songtime").innerHTML = "00:00 / 00:00";
-};
+
+  // Show all the songs in the playlist
+
+  let songUl = document.querySelector('.songList').getElementsByTagName('ul')[0]
+  for (const song of songs) {
+    songUl.innerHTML = songUl.innerHTML = songUl.innerHTML+ `<li><img class="invert" width="34" src="img/music.svg" alt="">
+                            <div class="info">
+                                <div> ${song.replaceAll("%20", " ")}</div>
+                                <div>Harry</div>
+                            </div>
+                            <div class="playnow">
+                                <span>Play Now</span>
+                                <img class="invert" src="img/play.svg" alt="">
+                            </div> </li>`;
+  }
+  
+      // Attach an event listener to each song
+      Array.from(document.querySelector(".songList").getElementsByTagName("li")).forEach(e => {
+        e.addEventListener("click", element => {
+            playMusic(e.querySelector(".info").firstElementChild.innerHTML.trim())
+
+        })
+    })
+  };
+
+
+
+
 
 async function main() {
   // Get the list of all the songs
