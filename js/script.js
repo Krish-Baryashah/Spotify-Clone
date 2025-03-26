@@ -85,13 +85,20 @@ const playMusic = (track, pause = false) => {
 
   // Display all the albums on the page
   async function displayAlbums() {
-    let a = await fetch(`http://127.0.0.1:5500/songss`);
+    let a = await fetch(`http://127.0.0.1:5500/songss`); /* yahan mene songs fetch kr liy phr await kia songs ke any ka
+    or phr isy string me convert kia phr ek div create kia and then us div me response dal dia chunkey response ke andar tha wo text jo hum ne fetch kia tha 
+    
+    */
     let response = await a.text();
     let div = document.createElement("div");
     div.innerHTML = response;
     let anchor = div.getElementsByTagName('a')
-    console.log(anchor);
-    
+  Array.from(anchor).forEach(e=>{
+    if(e.href.includes('/songss/')){
+      console.log(e.href);
+      
+    } 
+  })    
   }
 
 
@@ -103,7 +110,8 @@ async function main() {
 
   playMusic(songs[0], true);
 
-
+  // Display all the albums on the page
+displayAlbums()
   
 
  
@@ -273,7 +281,7 @@ async function main() {
 // Load the playlist whenever card is clicked
 
 Array.from(document.getElementsByClassName('card')).forEach((e)=>{
-  console.log(e);
+  // console.log(e);
   
   e.addEventListener('click',async (item)=>{
     // console.log(item.target,item.currentTarget.dataset);
