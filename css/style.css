@@ -305,9 +305,13 @@ body {
     padding: 0 12px;
     color: #000;
 }
+ .songtime {
+
+    width: 135px;
+} 
 
 .songinfo {
-    /* width: 235px; */
+    width: 235px;
 }
 
 .hamburger {
@@ -327,12 +331,30 @@ body {
     top: 25px;
     width: 29px;
 }
-.abovebar {
+.timevol{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.volume{
+    display: flex;
+    gap: 10px;    
+    justify-content: center;
+    align-items: center;
+}
+
+/* .abovebar {
     display: flex;
     margin: 20px 0;
     flex-direction: column;
     justify-content: space-between;
-}
+} */
+
+/* .timevol {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+} */
 
 @media (max-width:1400px) {
     .left {
@@ -372,12 +394,15 @@ body {
         display: block;
     }
 
-    /* 
+    .timevol{
+        flex-direction: column;
+        gap: 30px;
+    }
     .abovebar {
         flex-direction: column;
         align-items: center;
         gap: 23px;
-    } */
+    }
 
 
 
