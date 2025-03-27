@@ -65,6 +65,8 @@ for (const song of songs) {
 
       })
   })
+  return songs
+  
 }
 
 // Play Music
@@ -108,7 +110,7 @@ const playMusic = (track, pause = false) => {
           let a = await fetch(`http://127.0.0.1:5500/songss/${folder}/info.json`)
 
           let response = await a.json();
-          console.log(response);
+          // console.log(response);
           cardContainer.innerHTML = cardContainer.innerHTML + `<div data-folder="${folder}" class="card">
               <div class="play">
                 <svg
@@ -141,9 +143,11 @@ Array.from(document.getElementsByClassName('card')).forEach((e)=>{
     // console.log(item.target,item.currentTarget.dataset);
     songs = await getSongs(`songss/${item.currentTarget.dataset.folder}`)
     
-
+    playMusic(songs[0])
   })
 })
+
+
   }
 
 
@@ -280,7 +284,7 @@ displayAlbums()
       // console.log("Playing next song:", songs[index + 1]);
       playMusic(songs[index + 1]);
     } else {
-      console.log("No next song available!");
+      // console.log("No next song available!");
     }
   });
 
@@ -370,6 +374,31 @@ displayAlbums()
       // console.log(e,e.target,e.target.value);
       currentSong.volume = parseInt(e.target.value) / 100;
     });
+
+    
+    // Add event listener to mute the song
+    document.querySelector('.volume>img').addEventListener(
+      'click',e=>{
+        if(e.target.src.includes('volume.svg')){
+          e.target.src = e.target.src.replace('volume.svg','mute.svg') 
+          currentSong.volume = 0
+          document
+    .querySelector(".range")
+    .getElementsByTagName("input")[0].value = 0
+        }else{
+          e.target.src = e.target.src.replace('mute.svg','volume.svg') 
+          document
+    .querySelector(".range")
+    .getElementsByTagName("input")[0].value = 10
+          currentSong.volume = .1
+        }
+      }
+    )
+    
+    
+    
+    
+    
 }
 
 
