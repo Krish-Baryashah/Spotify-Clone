@@ -390,6 +390,7 @@ body {
     .cardContainer {
         margin: 0;
         justify-content: center;
+        height: 51vh;
     }
 
     .left .close {
@@ -439,12 +440,25 @@ body {
     }
 
     .card {
-        width: 44vw;
+        width: 30vw;
     }
 }
 @media (max-width:600px){
     .card {
         width: 88vw;
+    }
+    .cardContainer{
+        max-height: 50px;
+        /* overflow-y: unset; */
+    }
+}
+@media (max-width:400px){
+    .card {
+        width: 84vw;
+    }
+    .cardContainer{
+        max-height: 80vh;
+        /* overflow-y: unset; */
     }
 }
 @media (max-width:1200px){
@@ -470,8 +484,114 @@ body {
         margin: 0 6px;
     }
     .cardContainer{
-        max-height: unset;
-        overflow-y: unset;
+        max-height: 48vh;
+        /* overflow-y: unset; */
+    }
+}
+@media (max-width:354px){
+
+    .heading>*{
+        padding: 2px;
+    }
+    .buttons>*{
+        margin: 0 6px;
+    }
+    .cardContainer{
+        max-height: 37vh;
+        /* overflow-y: unset; */
+    }
+}
+@media (max-width:376px){
+
+    .heading>*{
+        padding: 2px;
+    }
+    .buttons>*{
+        margin: 0 6px;
+    }
+    .cardContainer{
+        max-height: 37vh;
+        /* overflow-y: unset; */
+    }
+}
+@media (max-width:361px){
+
+    .heading>*{
+        padding: 2px;
+    }
+    .buttons>*{
+        margin: 0 2px;
+    }
+    .cardContainer{
+        max-height: 37vh;
+        /* overflow-y: unset; */
+    }
+}
+@media (max-width:769px){
+
+    .heading>*{
+        padding: 2px;
+    }
+    .buttons>*{
+        margin: 0 6px;
+    }
+    .cardContainer{
+        max-height: 55vh;
+        /* overflow-y: unset; */
+    }
+}
+@media (max-width:541px){
+
+    .heading>*{
+        padding: 2px;
+    }
+    .buttons>*{
+        margin: 0 6px;
+    }
+    .cardContainer{
+        max-height: 51vh;
+        /* overflow-y: unset; */
+    }
+}
+@media (max-width:345px){
+
+    .heading>*{
+        padding: 2px;
+    }
+    .buttons>*{
+        margin: 0 1px;
+    }
+    .cardContainer{
+        max-height: 47vh;
+        /* overflow-y: unset; */
+    }
+}
+@media (max-width:413px){
+
+    .heading>*{
+        padding: 2px;
+    }
+    .buttons>*{
+        margin: 0 1px;
+    }
+    .cardContainer{
+        max-height: 50vh;
+        /* overflow-y: unset; */
+    }
+}
+@media (max-width:413px){
+
+    .heading>*{
+        padding: 2px;
+    }
+    .buttons>*{
+        margin: 6px -10px 0px 9px;
+    }
+    .loginbtn:hover {
+        font-weight: bold;
+        padding: 5px;
+        width: 58px;
+        font-size: 13px;
     }
 }
 
