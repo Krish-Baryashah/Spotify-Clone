@@ -5,6 +5,7 @@
 let currentSong = new Audio();
 let songs;
 let currFolder
+let svg
 function formatTime(seconds) {
   seconds = Math.round(seconds); // Round to nearest whole number
   const minutes = Math.floor(seconds / 60);
@@ -48,21 +49,22 @@ let songUl = document.querySelector('.songList').getElementsByTagName('ul')[0]
 songUl.innerHTML = ''
 for (const song of songs) {
   songUl.innerHTML = songUl.innerHTML = songUl.innerHTML+ `<li><img class="invert" width="34" src="img/music.svg" alt="">
-                          <div class="info">
-                              <div> ${song.replaceAll("%20", " ")}</div>
-                              <div>Harry</div>
-                          </div>
-                          <div class="playnow">
-                              <span>Play Now</span>
-                              <img class="invert" src="img/play.svg" alt="">
-                          </div> </li>`;
+   <div class="info">
+  <div> ${song.replaceAll("%20", " ")}</div>
+   <div>Keru</div>
+   </div>
+ <div class="playnow">
+  <span>Play Now</span>
+  <img class="invert" src="img/play.svg">
+   </div> </li>`;
+
 }
 
     // Attach an event listener to each song
     Array.from(document.querySelector(".songList").getElementsByTagName("li")).forEach(e => {
       e.addEventListener("click", element => {
           playMusic(e.querySelector(".info").firstElementChild.innerHTML.trim())
-
+ 
       })
   })
   return songs
