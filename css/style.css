@@ -112,7 +112,7 @@ body {
     padding: 16px;
 }
 
-.cardContianer {
+.cardContainer {
     display: flex;
     gap: 10px;
 
@@ -354,8 +354,16 @@ body {
     gap: 10px;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 }
+.range input{
+    cursor: pointer;
 
+}
+.center{
+    display: flex;
+    justify-content: center;
+}
 /* .abovebar {
     display: flex;
     margin: 20px 0;
@@ -379,7 +387,7 @@ body {
         width: 378px;
     }
 
-    .cardContianer {
+    .cardContainer {
         justify-content: center;
     }
 
@@ -460,7 +468,7 @@ body {
     .buttons>*{
         margin: 0 6px;
     }
-    .cardContianer{
+    .cardContainer{
         max-height: unset;
         overflow-y: unset;
     }
