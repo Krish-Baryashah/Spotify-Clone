@@ -203,7 +203,7 @@ Array.from(document.getElementsByClassName('card')).forEach((e)=>{
 
 async function main() {
   // Get the list of all the songs
-   await getSongs('songss/jhol');
+   await getSongs('songss/TalhaAnjum');
   // console.log(songs);
 
   playMusic(songs[0], true);
